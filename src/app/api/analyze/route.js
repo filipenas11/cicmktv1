@@ -21,10 +21,8 @@ Não adicione saudações, pontuações extras ou justificativas.
 `;
 
 const GEMINI_MODEL_FALLBACK_LIST = [
-    'gemini-2.5-flash',
-    'gemini-1.5-flash',
-    'gemini-2.5-pro',
-    'gemini-1.5-pro'
+    'gemini-3.8-flash',
+    'gemini-3.8-pro'
 ];
 
 async function fetchMetaAds(queryUrlOrTerm, maxCount = 10) {
@@ -33,7 +31,6 @@ async function fetchMetaAds(queryUrlOrTerm, maxCount = 10) {
             { "url": queryUrlOrTerm.startsWith('http') ? queryUrlOrTerm : `https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=BR&q=${encodeURIComponent(queryUrlOrTerm)}&search_type=keyword_unordered&media_type=all` }
         ],
         "count": maxCount,
-        "scrapePageAds.period": "",
         "scrapePageAds.activeStatus": "all",
         "scrapePageAds.sortBy": "impressions_desc",
         "scrapePageAds.countryCode": "BR"
@@ -54,9 +51,7 @@ async function fetchGoogleAds(domainOrQuery, maxCount = 10) {
         "searchQuery": domainOrQuery,
         "maxResults": maxCount,
         "platform": "",
-        "region": "BR",
-        "dateFrom": "",
-        "dateTo": ""
+        "region": "BR"
     };
 
     try {
